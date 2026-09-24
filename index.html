@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SST Tools Colombia · Luxometría</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>SST Tools Colombia</h1>
+    <p>Registro abierto de mediciones de iluminancia para trabajo de campo.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2>Nueva medición</h2>
+    <form id="measurementForm">
+      <div class="grid">
+        <label>Área
+          <input id="area" required placeholder="Ej. Oficina administrativa">
+        </label>
+        <label>Puesto / punto
+          <input id="point" required placeholder="Ej. Puesto 1">
+        </label>
+        <label>Tipo de fuente
+          <select id="source">
+            <option>LED blanco</option>
+            <option>LED color</option>
+            <option>Fluorescente</option>
+            <option>Sodio</option>
+            <option>Mercurio</option>
+            <option>Otra</option>
+          </select>
+        </label>
+        <label>Lux medidos
+          <input id="lux" type="number" min="0" step="0.01" required>
+        </label>
+        <label>Valor de referencia (lux)
+          <input id="reference" type="number" min="0" step="0.01" required>
+        </label>
+        <label>Observación
+          <input id="note" placeholder="Opcional">
+        </label>
+      </div>
+      <button type="submit">Agregar medición</button>
+    </form>
+  </section>
+
+  <section class="stats">
+    <article class="stat"><span>Promedio</span><strong id="avg">—</strong></article>
+    <article class="stat"><span>Mínimo</span><strong id="min">—</strong></article>
+    <article class="stat"><span>Máximo</span><strong id="max">—</strong></article>
+    <article class="stat"><span>Uniformidad min/prom</span><strong id="uniformity">—</strong></article>
+  </section>
+
+  <section class="card">
+    <div class="toolbar">
+      <h2>Mediciones</h2>
+      <div>
+        <button id="exportCsv" type="button" class="secondary">Exportar CSV</button>
+        <button id="clearAll" type="button" class="danger">Borrar todo</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Área</th><th>Punto</th><th>Fuente</th><th>Lux</th>
+            <th>Referencia</th><th>Resultado</th><th>Observación</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="notice">
+    <strong>Nota:</strong> el valor de referencia lo define el profesional responsable.
+    La aplicación no sustituye normas, calibración del equipo ni criterio técnico.
+  </section>
+</main>
+
+<footer>Proyecto open source · MIT License</footer>
+<script src="app.js"></script>
+</body>
+</html>
